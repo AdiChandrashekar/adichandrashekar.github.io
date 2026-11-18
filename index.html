@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aditya Chandrashekar</title>
+  <meta name="description" content="Aditya Chandrashekar: writing on policy and science at The Otherwise, and tools built with public data.">
+  <meta property="og:title" content="Aditya Chandrashekar">
+  <meta property="og:description" content="Writing on policy and science, and tools built with public data.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f3efe6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23a84622' stroke-width='2'%3E%3Cellipse cx='16' cy='16' rx='13' ry='10'/%3E%3Cellipse cx='16' cy='16' rx='8' ry='5.5'/%3E%3Cellipse cx='16' cy='16' rx='3' ry='2'/%3E%3C/g%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/contours.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#writing">Skip to writing</a>
+
+  <canvas id="terrain" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Survey readout: shows the "elevation" under the pointer -->
+  <div class="readout glass-chip" aria-hidden="true">
+    <span class="readout-dot"></span>
+    <span id="readout-coords">26.80°N 82.73°E</span>
+    <span class="readout-sep">·</span>
+    <span id="readout-elev">elev 412 m</span>
+  </div>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="stage" id="about" aria-labelledby="about-title">
+      <article class="window window--hero" data-tilt>
+        <div class="window-bar">
+          <span class="window-label">Survey sheet № 01</span>
+          <span class="window-meta mono">Uttar Pradesh · India</span>
+        </div>
+        <h1 id="about-title" class="hero-name">
+          <span class="hero-line">Aditya</span>
+          <span class="hero-line"><em>Chandrashekar</em></span>
+        </h1>
+        <p class="hero-lede">
+          I build data tools for public education and write <a href="#writing">The&nbsp;Otherwise</a>,
+          about policy, science, and things that occupy my brain for longer than they should.
+        </p>
+        <ul class="pills" aria-label="Elsewhere">
+          <li><a class="pill" href="https://adityachandrashekar.substack.com/" rel="me">Substack</a></li>
+          <li><a class="pill" href="https://github.com/adichandrashekar" rel="me">GitHub</a></li>
+          <li><a class="pill" href="https://www.linkedin.com/in/aditya-chandrashekar-a49591194/" rel="me">LinkedIn</a></li>
+          <li><a class="pill pill--accent" href="#contact" data-email>Email</a></li>
+        </ul>
+      </article>
+      <div class="grabber" aria-hidden="true"></div>
+    </section>
+
+    <!-- Writing -->
+    <section class="stage" id="writing" aria-labelledby="writing-title">
+      <article class="window" data-tilt>
+        <div class="window-bar">
+          <span class="window-label">Writing</span>
+          <a class="window-meta mono link-quiet" id="pub-link" href="https://adityachandrashekar.substack.com/">Substack ↗</a>
+        </div>
+        <header class="section-head">
+          <h2 id="writing-title" class="section-title"><em>The</em> Otherwise</h2>
+          <p class="section-sub" id="pub-desc">Policy, science, fun facts, and other things that occasionally occupy my brain for longer than they should.</p>
+        </header>
+
+        <div id="posts" class="posts" aria-live="polite">
+          <p class="muted">Loading posts…</p>
+        </div>
+
+        <a class="more" href="https://adityachandrashekar.substack.com/archive">All posts and subscribe <span aria-hidden="true">→</span></a>
+      </article>
+      <div class="grabber" aria-hidden="true"></div>
+    </section>
+
+    <!-- Projects -->
+    <section class="stage" id="projects" aria-labelledby="projects-title">
+      <article class="window" data-tilt>
+        <div class="window-bar">
+          <span class="window-label">Projects</span>
+          <a class="window-meta mono link-quiet" href="https://github.com/adichandrashekar">GitHub ↗</a>
+        </div>
+        <header class="section-head">
+          <h2 id="projects-title" class="section-title">Things I've <em>built</em></h2>
+          <p class="section-sub">Open-source tools, visualisers and data stories.</p>
+        </header>
+        <div id="project-list" class="projects">
+          <p class="muted">Loading projects…</p>
+        </div>
+      </article>
+      <div class="grabber" aria-hidden="true"></div>
+    </section>
+
+    <!-- Contact -->
+    <section class="stage stage--last" id="contact" aria-labelledby="contact-title">
+      <article class="window window--contact" data-tilt>
+        <div class="window-bar">
+          <span class="window-label">Contact</span>
+          <span class="window-meta mono">Say hello</span>
+        </div>
+        <h2 id="contact-title" class="section-title">Let's <em>talk</em></h2>
+        <p class="section-sub">About policy, data, a piece you read, or something you're building.</p>
+        <div class="contact-actions">
+          <a class="button button--primary" href="#contact" data-email>Write me an email</a>
+          <a class="button" href="https://www.linkedin.com/in/aditya-chandrashekar-a49591194/" rel="me">LinkedIn</a>
+          <a class="button" href="https://github.com/adichandrashekar" rel="me">GitHub</a>
+        </div>
+      </article>
+      <div class="grabber" aria-hidden="true"></div>
+      <p class="footnote mono">Contours are generated live. Move your cursor to reshape the land.</p>
+    </section>
+  </main>
+
+  <!-- Floating capsule nav -->
+  <nav class="dock" aria-label="Sections">
+    <span class="dock-lens" aria-hidden="true"></span>
+    <a href="#about" class="dock-item" data-section="about">About</a>
+    <a href="#writing" class="dock-item" data-section="writing">Writing</a>
+    <a href="#projects" class="dock-item" data-section="projects">Projects</a>
+    <a href="#contact" class="dock-item" data-section="contact">Contact</a>
+  </nav>
+
+  <noscript>
+    <style>.muted{display:none}</style>
+  </noscript>
+</body>
+</html>

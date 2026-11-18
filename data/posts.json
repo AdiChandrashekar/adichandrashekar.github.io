@@ -1,0 +1,42 @@
+{
+  "publication": {
+    "name": "The Otherwise",
+    "description": "I write about policy, science, fun facts, and other things that occasionally occupy my brain for longer than they should. It’s here, because otherwise I’d have to remember it.",
+    "url": "https://adityachandrashekar.substack.com"
+  },
+  "posts": [
+    {
+      "title": "Good Luck To Whoever Is Tasked With Delimitation Of The Lok Sabha",
+      "subtitle": "The reapportionment the Delimitation Bills would have resulted in and an interactive tool to visualise the oncoming train that’s barrelling towards us after the census",
+      "url": "https://adityachandrashekar.substack.com/p/good-luck-to-whoever-is-tasked-with",
+      "date": "2026-09-14T13:24:01.000Z",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/63ff1c43-d6a1-4b1e-a358-c9a1aadf727b_1600x1198.jpeg",
+      "minutes": 7
+    },
+    {
+      "title": "India Wants Better Teachers. But It Won't (Actually) Invest In Them",
+      "subtitle": "The Supreme Court has ordered twenty lakh teachers to prove they’re qualified and the system that is suddenly supposed to help them get there... can't.",
+      "url": "https://adityachandrashekar.substack.com/p/india-wants-better-teachers-but-it",
+      "date": "2026-09-08T20:09:09.000Z",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/14205a91-36a2-4f80-af09-3f1d30b0448a_984x810.avif",
+      "minutes": 9
+    },
+    {
+      "title": "Everything Is a Mission, Which Is Why Nothing Gets Finished",
+      "subtitle": "The Indian state is exceptionally good at launches and remarkably bad at what comes after",
+      "url": "https://adityachandrashekar.substack.com/p/everything-is-a-mission-which-is",
+      "date": "2026-08-31T19:11:50.000Z",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/b098a7fa-b584-4294-ae4b-f4d3609da31b_694x400.avif",
+      "minutes": 12
+    },
+    {
+      "title": "A Copper Shortage Is Coming, But In A Very Dumb Way",
+      "subtitle": "Record prices, a market in surplus, and a supply-chain collapse a decade away that the Americans are doing nothing about",
+      "url": "https://adityachandrashekar.substack.com/p/the-copper-shortage-that-isnt-here",
+      "date": "2026-08-31T18:15:08.000Z",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/036a4e8a-0cf3-4b25-9d54-92c0215c6f3f_800x533.png",
+      "minutes": 6
+    }
+  ],
+  "fetchedAt": "2026-11-18T08:35:09.328Z"
+}

@@ -1,0 +1,55 @@
+/* Design tokens — the single source of truth for the look.
+   Swap values here (or add a [data-theme] block) to change the aesthetic.
+   The contour canvas reads --contour* at runtime, so it follows too. */
+
+:root {
+  color-scheme: light;
+
+  /* Ground and backdrop */
+  --bg: #f3efe6;
+  --bg-vignette: #e9e2d3;
+  --contour: rgba(150, 128, 92, 0.34);
+  --contour-index: rgba(128, 104, 68, 0.62);
+  --contour-accent: rgba(177, 77, 40, 0.9);
+
+  /* Ink */
+  --ink: #1c1b22;
+  --ink-2: #4f4b57;
+  --ink-3: #6f6a78;
+  --accent: #a84622;
+  --accent-ink: #ffffff;
+
+  /* Glass */
+  --glass-fill: rgba(255, 255, 255, 0.62);
+  --glass-fill-strong: rgba(255, 255, 255, 0.8);
+  --glass-hairline: rgba(255, 255, 255, 0.9);
+  --glass-blur: 18px;
+  --glass-shadow: 0 30px 60px -20px rgba(58, 52, 40, 0.28), 0 8px 18px -8px rgba(58, 52, 40, 0.18);
+  --glass-highlight: rgba(255, 255, 255, 0.75);
+
+  /* Prism (border light) */
+  --prism-1: #ffb3d9;
+  --prism-2: #b3d4ff;
+  --prism-3: #b8f5d6;
+  --prism-4: #fff0a8;
+  --prism-strength: 1;
+
+  /* Type */
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  /* Shape and space */
+  --r-window: 28px;
+  --r-card: 20px;
+  --r-pill: 999px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --measure: 62ch;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur-base: 420ms;
+  --dur-slow: 900ms;
+}

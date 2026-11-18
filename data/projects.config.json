@@ -1,0 +1,95 @@
+{
+  "owner": "adichandrashekar",
+  "projects": [
+    {
+      "repo": "lok-sabha-delimitation-apportionment",
+      "title": "Lok Sabha Delimitation Visualiser",
+      "blurb": "The Frozen House: an interactive tool for seeing how Lok Sabha seats would be reapportioned across states after the census.",
+      "url": "https://adichandrashekar.github.io/lok-sabha-delimitation-apportionment/",
+      "embed": true,
+      "featured": true,
+      "tags": [
+        "Interactive",
+        "Elections",
+        "Data"
+      ]
+    },
+    {
+      "repo": "india-budget",
+      "title": "India's Education Budget",
+      "blurb": "India's education budget, Union and states, as a scroll-driven data story.",
+      "url": "https://adichandrashekar.github.io/india-budget/",
+      "tags": [
+        "Data story",
+        "Budget"
+      ],
+      "image": "assets/shots/india-budget.jpg"
+    },
+    {
+      "repo": "up-nipunbharat-school-locator",
+      "title": "UP School Locator",
+      "blurb": "Phone-first locator for 1.3 lakh Uttar Pradesh government schools, with Google Maps directions.",
+      "url": "https://adichandrashekar.github.io/up-nipunbharat-school-locator/",
+      "tags": [
+        "Maps",
+        "Mobile"
+      ],
+      "image": "assets/shots/school-locator.jpg"
+    },
+    {
+      "repo": "nipunbharat-fln-onepager-maker",
+      "title": "One-Pager Maker",
+      "blurb": "Builds teacher and mentor one-pagers from the Grade 2 Hindi teaching-strategy compendium, with auto-layout, an editor, and PDF/PNG export.",
+      "url": "https://adichandrashekar.github.io/nipunbharat-fln-onepager-maker/",
+      "tags": [
+        "Tool",
+        "Teaching"
+      ],
+      "image": "assets/shots/onepager-maker.jpg"
+    },
+    {
+      "repo": "arp-ssp-dashboard",
+      "title": "ARP Dashboard",
+      "blurb": "School-visit and classroom-practice dashboard for Academic Resource Persons and mentors across ten Uttar Pradesh districts.",
+      "url": "https://adichandrashekar.github.io/arp-ssp-dashboard/",
+      "tags": [
+        "Dashboard",
+        "Education"
+      ],
+      "image": "assets/shots/arp-dashboard.jpg"
+    },
+    {
+      "repo": "arp-ssp-dashboard",
+      "title": "ARP Form Study",
+      "blurb": "A data story on supportive supervision: how ARPs fill in classroom observation forms, and the recording habits that hold month after month.",
+      "url": "https://adichandrashekar.github.io/arp-ssp-dashboard/study/",
+      "tags": [
+        "Data story",
+        "Research"
+      ],
+      "image": "assets/shots/arp-form-study.jpg"
+    },
+    {
+      "repo": "basti-arp-app",
+      "title": "My ARP Report",
+      "blurb": "Phone app for ARPs covering visits, plans, class KPIs, and focus schools. Runs in Basti and Kanpur Nagar.",
+      "url": "https://adichandrashekar.github.io/basti-arp-app/",
+      "tags": [
+        "App",
+        "Mobile"
+      ],
+      "image": "assets/shots/arp-report.jpg"
+    },
+    {
+      "repo": "basti-video-pathshala",
+      "title": "Video Pathshala",
+      "blurb": "TicTacLearn Hindi lesson videos for Basti schools, with monitoring of which schools play them and for how long.",
+      "url": "https://adichandrashekar.github.io/basti-video-pathshala/",
+      "tags": [
+        "Video",
+        "Monitoring"
+      ],
+      "image": "assets/shots/video-pathshala.jpg"
+    }
+  ]
+}
