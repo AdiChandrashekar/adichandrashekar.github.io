@@ -1,6 +1,7 @@
-/* Design tokens — the single source of truth for the look.
-   Swap values here (or add a [data-theme] block) to change the aesthetic.
-   The contour canvas reads --contour* at runtime, so it follows too. */
+/* Design tokens: the single source of truth for the look.
+   Colour: <html data-theme="...">   Fonts: <html data-font="...">
+   Both can be previewed with URL params, e.g. ?theme=mist&font=fraunces
+   The contour canvas reads --contour / --contour-index, so it follows the theme. */
 
 :root {
   color-scheme: light;
@@ -8,9 +9,10 @@
   /* Ground and backdrop */
   --bg: #f3efe6;
   --bg-vignette: #e9e2d3;
-  --contour: rgba(150, 128, 92, 0.34);
-  --contour-index: rgba(128, 104, 68, 0.62);
-  --contour-accent: rgba(177, 77, 40, 0.9);
+  --contour: rgba(150, 128, 92, 0.32);
+  --contour-index: rgba(128, 104, 68, 0.6);
+  --sea: rgba(110, 150, 170, 0.14);
+  --coast: rgba(60, 80, 95, 0.7);
 
   /* Ink */
   --ink: #1c1b22;
@@ -18,26 +20,31 @@
   --ink-3: #6f6a78;
   --accent: #a84622;
   --accent-ink: #ffffff;
+  --hairline: rgba(28, 27, 34, 0.09);
 
   /* Glass */
   --glass-fill: rgba(255, 255, 255, 0.62);
   --glass-fill-strong: rgba(255, 255, 255, 0.8);
+  --glass-fill-max: #ffffff;
+  --glass-fill-mobile: rgba(255, 255, 255, 0.78);
   --glass-hairline: rgba(255, 255, 255, 0.9);
   --glass-blur: 18px;
   --glass-shadow: 0 30px 60px -20px rgba(58, 52, 40, 0.28), 0 8px 18px -8px rgba(58, 52, 40, 0.18);
   --glass-highlight: rgba(255, 255, 255, 0.75);
 
-  /* Prism (border light) */
+  /* Prism (window edges) */
   --prism-1: #ffb3d9;
   --prism-2: #b3d4ff;
   --prism-3: #b8f5d6;
   --prism-4: #fff0a8;
   --prism-strength: 1;
 
-  /* Type */
+  /* Type (default set: Instrument) */
   --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --font-sans: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
 
   /* Shape and space */
   --r-window: 28px;
@@ -52,4 +59,236 @@
   --dur-fast: 180ms;
   --dur-base: 420ms;
   --dur-slow: 900ms;
+}
+
+/* ---------------- Colour themes ---------------- */
+
+/* Mist: cool grey-blue paper, slate contours, cobalt accent */
+:root[data-theme="mist"] {
+  --bg: #edf1f5;
+  --bg-vignette: #dde4ec;
+  --contour: rgba(88, 108, 138, 0.28);
+  --contour-index: rgba(70, 90, 122, 0.55);
+  --ink: #131a26;
+  --ink-2: #43506a;
+  --ink-3: #66718a;
+  --accent: #2b55c9;
+  --hairline: rgba(19, 26, 38, 0.09);
+  --glass-shadow: 0 30px 60px -20px rgba(40, 52, 80, 0.28), 0 8px 18px -8px rgba(40, 52, 80, 0.16);
+  --prism-1: #c4d3ff;
+  --prism-2: #c9f1ff;
+  --prism-3: #e2d6ff;
+  --prism-4: #ffd9ea;
+}
+
+/* Sage: green-grey ground, moss contours, forest accent */
+:root[data-theme="sage"] {
+  --bg: #edf0e6;
+  --bg-vignette: #dfe4d4;
+  --contour: rgba(92, 112, 76, 0.3);
+  --contour-index: rgba(74, 94, 58, 0.58);
+  --sea: rgba(92, 138, 150, 0.16);
+  --coast: rgba(44, 76, 84, 0.75);
+  --ink: #18201a;
+  --ink-2: #47524a;
+  --ink-3: #69746b;
+  --accent: #2c6a4c;
+  --hairline: rgba(24, 32, 26, 0.09);
+  --glass-shadow: 0 30px 60px -20px rgba(50, 66, 44, 0.26), 0 8px 18px -8px rgba(50, 66, 44, 0.16);
+  --prism-1: #d3f2c4;
+  --prism-2: #fff1b0;
+  --prism-3: #c4ece2;
+  --prism-4: #f0d7ff;
+}
+
+/* Dusk: lilac haze, plum contours, magenta accent */
+:root[data-theme="dusk"] {
+  --bg: #f1ebf2;
+  --bg-vignette: #e4d9e7;
+  --contour: rgba(118, 88, 128, 0.28);
+  --contour-index: rgba(98, 68, 110, 0.55);
+  --ink: #1f1624;
+  --ink-2: #54475a;
+  --ink-3: #75687b;
+  --accent: #a23a78;
+  --hairline: rgba(31, 22, 36, 0.09);
+  --glass-shadow: 0 30px 60px -20px rgba(70, 44, 80, 0.28), 0 8px 18px -8px rgba(70, 44, 80, 0.16);
+  --prism-1: #ffc2dc;
+  --prism-2: #d4c2ff;
+  --prism-3: #c2e0ff;
+  --prism-4: #ffe2c2;
+}
+
+/* Sand: warm dune ground, ochre contours, teal accent */
+:root[data-theme="sand"] {
+  --bg: #f5ede0;
+  --bg-vignette: #eadcc6;
+  --contour: rgba(168, 128, 78, 0.3);
+  --contour-index: rgba(146, 106, 58, 0.58);
+  --ink: #1e1a16;
+  --ink-2: #544a40;
+  --ink-3: #766a5e;
+  --accent: #0d7472;
+  --hairline: rgba(30, 26, 22, 0.09);
+  --prism-1: #ffd1b3;
+  --prism-2: #b3ece6;
+  --prism-3: #fff0a8;
+  --prism-4: #c9d6ff;
+}
+
+/* Night: dark slate ground, pale contours, smoked glass, apricot accent */
+:root[data-theme="night"] {
+  color-scheme: dark;
+  --bg: #11151b;
+  --bg-vignette: #080a0e;
+  --contour: rgba(170, 190, 215, 0.14);
+  --contour-index: rgba(170, 190, 215, 0.3);
+  --sea: rgba(60, 110, 160, 0.22);
+  --coast: rgba(190, 215, 235, 0.6);
+  --ink: #eef1f6;
+  --ink-2: #b4bccb;
+  --ink-3: #8a93a3;
+  --accent: #ffad7a;
+  --accent-ink: #11151b;
+  --hairline: rgba(238, 241, 246, 0.1);
+  --glass-fill: rgba(28, 34, 44, 0.58);
+  --glass-fill-strong: rgba(40, 47, 60, 0.82);
+  --glass-fill-max: #2a3140;
+  --glass-fill-mobile: rgba(28, 34, 44, 0.84);
+  --glass-hairline: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6), 0 8px 18px -8px rgba(0, 0, 0, 0.4);
+  --glass-highlight: rgba(255, 255, 255, 0.18);
+  --prism-1: #ff8ec7;
+  --prism-2: #7fb6ff;
+  --prism-3: #7fffc4;
+  --prism-4: #ffe27f;
+  --prism-strength: 0.75;
+}
+
+/* ---------------- Font sets ---------------- */
+/* Each set's Google Fonts URL lives in assets/js/fonts.js */
+
+:root[data-font="fraunces"] {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --display-weight: 380;
+  --display-tracking: -0.025em;
+}
+:root[data-font="newsreader"] {
+  --font-display: "Newsreader", Georgia, serif;
+  --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+}
+:root[data-font="bricolage"] {
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+  --display-weight: 650;
+  --display-tracking: -0.04em;
+}
+:root[data-font="syne"] {
+  --font-display: "Syne", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --display-weight: 700;
+  --display-tracking: -0.03em;
+}
+:root[data-font="cormorant"] {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Work Sans", "Segoe UI", system-ui, sans-serif;
+  --display-weight: 500;
+  --display-tracking: -0.01em;
+}
+
+/* Coast: drawn from the Chennai street map (cream land, Bay-of-Bengal blue,
+   amber and orange roads). Navy ink, road-amber highlighter, road-orange accent. */
+:root[data-theme="coast"] {
+  --bg: #f4efe3;
+  --bg-vignette: #e6ddc9;
+  --contour: rgba(52, 92, 110, 0.26);
+  --contour-index: rgba(40, 80, 98, 0.48);
+  --sea: rgba(120, 170, 190, 0.08);
+  --coast: rgba(28, 68, 88, 0.62);
+  --ink: #172a35;
+  --ink-2: #43555f;
+  --ink-3: #64757f;
+  --accent: #b0502a;
+  --accent-ink: #ffffff;
+  --marker: #f3c04f;
+  --marker-2: #9fd0df;
+  --hairline: rgba(23, 42, 53, 0.1);
+  --glass-fill: rgba(255, 252, 245, 0.66);
+  --glass-fill-strong: rgba(255, 253, 248, 0.84);
+  --glass-fill-max: #fffdf8;
+  --glass-fill-mobile: rgba(255, 252, 245, 0.82);
+  --glass-shadow: 0 30px 60px -22px rgba(23, 52, 68, 0.3), 0 8px 18px -8px rgba(23, 52, 68, 0.16);
+  --prism-1: #f1c56b;
+  --prism-2: #9fcbd9;
+  --prism-3: #e9a27a;
+  --prism-4: #fbeccb;
+  --prism-strength: 0.85;
+}
+
+/* ===== Map-matched themes (each pairs with assets/relief/<city>-streets-<theme>.jpg) =====
+   --glass-rgb tints the liquid glass; --emph colours the emphasis marks. */
+:root { --glass-rgb: 255 255 255; --emph: var(--accent); }
+
+/* Sage: grey-green land, sea-glass water, olive-gold roads, forest ink */
+:root[data-theme="sage"] {
+  --bg: #eff2e8; --bg-vignette: #dfe4d4;
+  --contour: rgba(62, 92, 74, 0.26); --contour-index: rgba(50, 80, 62, 0.46);
+  --sea: rgba(110, 150, 136, 0.06); --coast: rgba(44, 76, 62, 0.6);
+  --ink: #1d2c24; --ink-2: #44554a; --ink-3: #66756b;
+  --accent: #36654a; --accent-ink: #fff; --emph: #4f7d5f;
+  --hairline: rgba(29, 44, 36, 0.1);
+  --glass-rgb: 241 245 236;
+  --prism-1: #d3e8c8; --prism-2: #f3e6b4; --prism-3: #bfdcd2; --prism-4: #ffffff; --prism-strength: 0.7;
+}
+
+/* Eucalyptus: cooler blue-green water, ochre roads, deep teal ink */
+:root[data-theme="eucalyptus"] {
+  --bg: #ecf0ea; --bg-vignette: #d9e2db;
+  --contour: rgba(44, 92, 88, 0.26); --contour-index: rgba(32, 80, 76, 0.46);
+  --sea: rgba(90, 150, 146, 0.06); --coast: rgba(30, 74, 70, 0.6);
+  --ink: #16302d; --ink-2: #3e5653; --ink-3: #617673;
+  --accent: #2b6a62; --accent-ink: #fff; --emph: #c38f4a;
+  --hairline: rgba(22, 48, 45, 0.1);
+  --glass-rgb: 238 244 241;
+  --prism-1: #bfe0dc; --prism-2: #f1d7a8; --prism-3: #d6e8cf; --prism-4: #ffffff; --prism-strength: 0.7;
+}
+
+/* Monsoon: rain-grey land, slate sea, muted green roads, mustard mark */
+:root[data-theme="monsoon"] {
+  --bg: #e6e9e4; --bg-vignette: #d3d8d2;
+  --contour: rgba(48, 66, 70, 0.26); --contour-index: rgba(36, 54, 58, 0.46);
+  --sea: rgba(70, 100, 106, 0.07); --coast: rgba(28, 44, 48, 0.6);
+  --ink: #1b2526; --ink-2: #435052; --ink-3: #657173;
+  --accent: #3f5f60; --accent-ink: #fff; --emph: #c9a13e;
+  --hairline: rgba(27, 37, 38, 0.1);
+  --glass-rgb: 236 239 236;
+  --prism-1: #cfdad8; --prism-2: #ecd9a0; --prism-3: #dfe4dc; --prism-4: #ffffff; --prism-strength: 0.6;
+}
+
+/* Laterite: red-earth roads on warm sand, sage sea, deep green ink */
+:root[data-theme="laterite"] {
+  --bg: #f2eade; --bg-vignette: #e5d9c6;
+  --contour: rgba(96, 72, 56, 0.24); --contour-index: rgba(84, 60, 44, 0.42);
+  --sea: rgba(110, 150, 130, 0.06); --coast: rgba(50, 76, 62, 0.6);
+  --ink: #22332a; --ink-2: #4a5a50; --ink-3: #6c776f;
+  --accent: #a9532f; --accent-ink: #fff; --emph: #b25c36;
+  --hairline: rgba(34, 51, 42, 0.1);
+  --glass-rgb: 246 240 231;
+  --prism-1: #f0c9ad; --prism-2: #c9dfd1; --prism-3: #f5e2b8; --prism-4: #ffffff; --prism-strength: 0.7;
+}
+
+/* Indigo: dye-blue roads and sea on unbleached cotton */
+:root[data-theme="indigo"] {
+  --bg: #f0eee6; --bg-vignette: #e0ddd2;
+  --contour: rgba(52, 62, 110, 0.22); --contour-index: rgba(40, 50, 100, 0.42);
+  --sea: rgba(80, 96, 150, 0.06); --coast: rgba(36, 46, 96, 0.6);
+  --ink: #1a2140; --ink-2: #444a66; --ink-3: #676c86;
+  --accent: #364896; --accent-ink: #fff; --emph: #4a5db0;
+  --hairline: rgba(26, 33, 64, 0.1);
+  --glass-rgb: 244 243 238;
+  --prism-1: #c9d0f0; --prism-2: #f1e6c8; --prism-3: #d9dcef; --prism-4: #ffffff; --prism-strength: 0.7;
 }

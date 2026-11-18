@@ -1,0 +1,17 @@
+{
+  "source": "Terrarium terrain tiles (AWS Open Data)",
+  "locations": [
+    {
+      "slug": "chennai",
+      "label": "Chennai and the Bay of Bengal",
+      "lat": 13.06,
+      "lon": 80.19,
+      "z": 11,
+      "scale": "sqrt",
+      "width": 256,
+      "height": 192,
+      "min": -88,
+      "max": 143
+    }
+  ]
+}

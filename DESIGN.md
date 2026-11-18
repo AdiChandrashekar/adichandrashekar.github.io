@@ -14,10 +14,11 @@ deliberately open to change: every value lives in `assets/css/tokens.css`.
 | Structure | Single column of floating windows; one window per section. Bottom-centre glass capsule nav. |
 | Surface | Frosted glass (`--glass-fill`, backdrop blur), 1.5px prismatic border, soft specular highlight that follows the pointer. |
 | Depth | Windows tilt slightly toward the pointer (max ~4°) and rise in from depth on scroll. A grab-bar sits under each window. |
-| Backdrop | Canvas topographic contours (marching squares over animated noise). Every 5th line is an index contour. Terrain bulges under the pointer; parallax on scroll. |
-| Typography | Instrument Serif (display, italic for emphasis) · Instrument Sans (UI/body) · JetBrains Mono (readouts, dates). |
-| Colour | Warm paper ground, survey-brown contours, near-black ink, one terracotta accent, pastel prism (pink → blue → mint → butter). |
+| Backdrop | Real terrain: baked SRTM-derived heightmaps (`data/terrain/`, built by `scripts/build-terrain.mjs`), smoothed and traced with marching squares. Contours creep slowly uphill and the view drifts; no pointer reaction. Location via `<html data-terrain>`. |
+| Typography | Font sets via `<html data-font>` (instrument default, fraunces, newsreader, bricolage, syne, cormorant). |
+| Colour | Themes via `<html data-theme>` (paper default, mist, sage, dusk, sand, night). Preview any combination with `?theme=&font=&terrain=`. |
 | Motion | Slow and ambient. Everything still under `prefers-reduced-motion`; glass goes opaque under `prefers-reduced-transparency`. |
+| Devices | Desktop: tilt, sheen, spinning prism, live iframe preview, 3-column projects, 15 fps terrain. Phones: lighter blur, no tilt or spin, screenshots instead of iframes, swipeable project carousel, full-width dock, 8 fps coarser terrain. |
 | Accessibility | Text sits only on glass at ≥ 0.62 white, ink ≥ 12:1. Keyboard focus rings use the accent. Canvas is decorative (`aria-hidden`). |
 
 ## Tokens
@@ -31,3 +32,6 @@ recolours the backdrop too.
 
 ## Change log
 - 2026-11-18 — Initial lock: Spatial + light prismatic glass, topographic backdrop A.
+- 2026-11-18 — Real terrain backdrop (non-reactive), theme and font presets, separate desktop and phone layouts.
+- 2026-11-18 — Chennai terrain with bathymetry and the OpenStreetMap colour street map as backdrop; new Coast theme (navy ink, road-amber, sea blue); emphasis is now a highlighter-marker stroke instead of italic second-colour text.
+- 2026-11-18 — Indigo theme with matching recoloured map (more land, faint place names); liquid-glass panels; emphasis is a generated river (sine-generated meander, tapered body, bank line, tributary) drawn by assets/js/river.js.

@@ -5,6 +5,7 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const isPhone = window.matchMedia("(max-width: 720px), (pointer: coarse)").matches;
 
   // ---------- Email: assembled only at click time, never in the HTML ----------
   const mailParts = {
@@ -72,7 +73,8 @@
       if (!projects?.length) throw new Error("no projects");
       projEl.innerHTML = projects
         .map((p) => {
-          const preview = p.embed
+          // Live iframe previews only on desktop; phones get the lighter screenshot.
+          const preview = p.embed && !isPhone
             ? `<div class="card-preview" data-embed="${esc(p.url)}">
                  <span class="card-live mono">Live preview</span>
                </div>`
@@ -165,7 +167,7 @@
     windows.forEach((w) => io.observe(w));
   }
 
-  if (finePointer && !reduceMotion) {
+  if (finePointer && !reduceMotion && !isPhone) {
     const MAX = 3.5; // degrees
     document.querySelectorAll("[data-tilt]").forEach((w) => {
       w.addEventListener("pointermove", (e) => {
@@ -197,9 +199,15 @@
       if (i === item) i.setAttribute("aria-current", "true");
       else i.removeAttribute("aria-current");
     });
-    lens.style.left = item.offsetLeft + "px";
-    lens.style.width = item.offsetWidth + "px";
+    const d = dock.getBoundingClientRect();
+    const r = item.getBoundingClientRect();
+    if (!r.width) return;
+    lens.style.left = r.left - d.left + "px";
+    lens.style.width = r.width + "px";
   }
+  const remeasure = () => moveLens(items.find((i) => i.classList.contains("is-active")) || items[0]);
+  window.addEventListener("load", remeasure);
+  document.fonts?.ready.then(remeasure);
 
   const sections = items.map((i) => document.getElementById(i.dataset.section));
   const visible = new Map();

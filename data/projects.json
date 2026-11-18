@@ -7,7 +7,7 @@
       "url": "https://adichandrashekar.github.io/lok-sabha-delimitation-apportionment/",
       "source": "https://github.com/AdiChandrashekar/lok-sabha-delimitation-apportionment",
       "embed": true,
-      "image": null,
+      "image": "assets/shots/lok-sabha.jpg",
       "tags": [
         "Interactive",
         "Elections",
@@ -130,5 +130,5 @@
       "featured": false
     }
   ],
-  "fetchedAt": "2026-11-18T08:35:13.335Z"
+  "fetchedAt": "2026-11-18T12:28:22.477Z"
 }

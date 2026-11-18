@@ -5,3 +5,4 @@ node_modules/
 
 # Private notes (contains the plain-text email address)
 links.md
+scripts/.cache/
