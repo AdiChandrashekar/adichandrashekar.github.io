@@ -69,6 +69,7 @@
 
   // ---------- Sea ----------
   let coastLevel = null, seaMask = null;
+  let PAD = 0, CH = 0, drawScroll = 0;   // canvas overscan, canvas height, scrollY at last draw
   function buildSeaMask(raw, w, h) {
     const c = document.createElement("canvas");
     c.width = w; c.height = h;
@@ -196,8 +197,9 @@
   function sizeRelief() {
     if (!reliefCanvas) return;
     reliefCanvas.width = Math.round(W * Math.min(dpr, 1.5));
-    reliefCanvas.height = Math.round(H * Math.min(dpr, 1.5));
-    reliefCanvas.style.height = H + "px";
+    reliefCanvas.height = Math.round(CH * Math.min(dpr, 1.5));
+    reliefCanvas.style.height = CH + "px";
+    reliefCanvas.style.top = -PAD + "px";
   }
 
   function drawRelief() {
@@ -259,11 +261,16 @@
     // On phones the URL bar resizes innerHeight while scrolling; use the large viewport
     // so the canvas doesn't redraw on every scroll.
     H = mobileQuery.matches ? Math.max(window.innerHeight, screen.height || 0) : window.innerHeight;
+    // Overscan above and below the viewport: scroll parallax is applied as a cheap
+    // CSS transform every frame, and the canvas is only redrawn at the profile fps.
+    PAD = Math.round(H * 0.15);
+    CH = H + 2 * PAD;
     canvas.width = Math.round(W * dpr);
-    canvas.height = Math.round(H * dpr);
-    canvas.style.height = H + "px";
+    canvas.height = Math.round(CH * dpr);
+    canvas.style.height = CH + "px";
+    canvas.style.top = -PAD + "px";
     cols = Math.ceil(W / profile.cell) + 1;
-    rows = Math.ceil(H / profile.cell) + 1;
+    rows = Math.ceil(CH / profile.cell) + 1;
     field = new Float32Array((cols + 1) * (rows + 1));
     sizeRelief();
   }
@@ -275,7 +282,8 @@
     const t = (clock / DRIFT_SECONDS) * Math.PI * 2;
     const slackX = (w * scale - W) / 2, slackY = (h * scale - H) / 2;
     const ox = (w * scale - W) / 2 + Math.sin(t) * slackX * 0.7;
-    const oy = (h * scale - H) / 2 + Math.cos(t * 0.73) * slackY * 0.7 - window.scrollY * SCROLL_PARALLAX;
+    drawScroll = window.scrollY;
+    const oy = (h * scale - H) / 2 + Math.cos(t * 0.73) * slackY * 0.7 - drawScroll * SCROLL_PARALLAX - PAD;
     view.scale = scale; view.ox = ox; view.oy = oy;
     const cell = profile.cell;
     let i = 0;
@@ -328,7 +336,8 @@
     const nLast = Math.floor(1 / STEP - phase) + 1;
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, W, H);
+    ctx.clearRect(0, 0, W, CH);
+    shift();
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
 
@@ -386,7 +395,25 @@
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => { resize(); draw(); }, 120);
   }, { passive: true });
-  if (reduceMotion.matches) window.addEventListener("scroll", () => requestAnimationFrame(draw), { passive: true });
+  // Between redraws, slide the drawn layers by however far the page has scrolled
+  // since the last draw, so the parallax tracks the scroll on every frame.
+  function shift() {
+    const y = ((window.scrollY - drawScroll) * SCROLL_PARALLAX).toFixed(2);
+    const tf = `translate3d(0, ${y}px, 0)`;
+    canvas.style.transform = tf;
+    if (reliefCanvas) reliefCanvas.style.transform = tf;
+  }
+  let shiftQueued = false;
+  window.addEventListener("scroll", () => {
+    if (shiftQueued) return;
+    shiftQueued = true;
+    requestAnimationFrame(() => {
+      shiftQueued = false;
+      // a big jump (anchor link, scrollbar drag) would outrun the overscan: redraw
+      if (Math.abs(window.scrollY - drawScroll) * SCROLL_PARALLAX > PAD * 0.8) draw();
+      else shift();
+    });
+  }, { passive: true });
   document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
   reduceMotion.addEventListener?.("change", start);
   // theme switches (data-theme on <html>) recolour the lines

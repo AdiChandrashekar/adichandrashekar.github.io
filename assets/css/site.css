@@ -379,7 +379,7 @@ main {
   .hero-hi { font-size: clamp(20px, 2vw, 26px); margin-bottom: 14px; }
   .window--hero .pills { flex-direction: column; align-items: stretch; min-width: 180px; }
   .pill { padding: 11px 22px; font-size: 15px; }
-  .pill:hover { transform: translateX(-3px); background: var(--glass-fill-max); box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.3); }
+  .pill:hover { transform: translateX(-3px); background: var(--glass-fill-max); box-shadow: 0 4px 10px -6px rgba(0, 0, 0, 0.22); }
   .pill--accent:hover { background: var(--accent); color: var(--accent-ink); }
 
   .section-head { margin-bottom: 30px; }
@@ -592,6 +592,7 @@ main {
   transition: opacity 2s var(--ease-out);
 }
 #terrain { z-index: 0; }
+#terrain, #relief { will-change: transform; }
 .relief-wash {
   background-size: cover;
   background-position: center;
@@ -672,10 +673,11 @@ main {
   background:
     linear-gradient(115deg, transparent 32%, rgb(255 255 255 / 0.16) 40%, transparent 48%),
     radial-gradient(120% 90% at 8% -12%, rgb(255 255 255 / 0.5), transparent 55%),
-    linear-gradient(160deg, rgb(var(--glass-rgb) / 0.6), rgb(var(--glass-rgb) / 0.36));
+    linear-gradient(160deg, rgb(var(--glass-rgb) / 0.68), rgb(var(--glass-rgb) / 0.45));
   -webkit-backdrop-filter: blur(6px) saturate(190%) brightness(1.05);
   backdrop-filter: blur(6px) saturate(190%) brightness(1.05);
   box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 26%, transparent),
     inset 0 1.5px 0 rgb(255 255 255 / 0.95),
     inset 0 -1px 0 rgb(255 255 255 / 0.45),
     inset 1px 0 0 rgb(255 255 255 / 0.4),
@@ -696,14 +698,14 @@ main {
 }
 .pill,
 .button:not(.button--primary) {
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.85), rgb(var(--glass-rgb) / 0.6));
-  box-shadow: inset 0 1px 0 #fff, inset 0 -6px 10px -8px rgb(0 0 0 / 0.12), 0 4px 10px -6px rgb(0 0 0 / 0.2);
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.78), rgb(255 255 255 / 0.62));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7), 0 2px 5px -4px rgb(0 0 0 / 0.16);
   border-color: rgb(255 255 255 / 0.7);
 }
 .pill--accent,
 .button--primary {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--ink) 82%, #fff), var(--ink));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.25), 0 6px 14px -8px rgb(0 0 0 / 0.45);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ink) 92%, #fff), var(--ink));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 2px 6px -4px rgb(0 0 0 / 0.3);
 }
 .dock-lens {
   background: linear-gradient(180deg, rgb(255 255 255 / 0.95), rgb(var(--glass-rgb) / 0.75));
@@ -713,7 +715,7 @@ main {
   .window {
     background:
       radial-gradient(120% 90% at 8% -12%, rgb(255 255 255 / 0.5), transparent 55%),
-      linear-gradient(160deg, rgb(var(--glass-rgb) / 0.76), rgb(var(--glass-rgb) / 0.58));
+      linear-gradient(160deg, rgb(var(--glass-rgb) / 0.82), rgb(var(--glass-rgb) / 0.66));
     -webkit-backdrop-filter: blur(8px) saturate(170%);
     backdrop-filter: blur(8px) saturate(170%);
   }
@@ -781,28 +783,6 @@ main {
 [data-emph="tape"] .hl--sea::before { transform: rotate(1.6deg) scaleX(0); }
 [data-emph="tape"] .window.is-in .hl::before { transform: rotate(-2deg) scaleX(1); }
 [data-emph="tape"] .window.is-in .hl--sea::before { transform: rotate(1.6deg) scaleX(1); }
-
-/* River: a generated, hand-drawn river under the word (assets/js/river.js) */
-[data-emph="river"] .hl { padding-bottom: 0.08em; }
-[data-emph="river"] .river {
-  position: absolute;
-  left: -0.06em;
-  bottom: -0.3em;
-  overflow: visible;
-  pointer-events: none;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 1500ms cubic-bezier(0.45, 0, 0.2, 1) 300ms;
-}
-[data-emph="river"] .window.is-in .river,
-html:not(.js) .river { clip-path: inset(0 -4% 0 0); }
-.river-body { fill: var(--emph); opacity: 0.88; }
-.river-bleed { fill: var(--emph); opacity: 0.22; }
-.river-bank { fill: none; stroke: var(--emph); stroke-linecap: round; opacity: 0.42; }
-.river-trib { fill: none; stroke: var(--emph); stroke-linecap: round; opacity: 0.7; }
-.section-title .river { bottom: -0.26em; }
-[data-emph="river"] .section-head .section-sub, [data-emph="river"] .window--contact .section-sub { margin-top: 0.9em; }
-[data-emph="river"] .hero-name { padding-bottom: 0.12em; }
-[data-emph="river"] .hl--sea .river-body { opacity: 0.75; }
 
 /* Stamp: an inked rectangle, slightly askew, with a fainter second strike */
 [data-emph="stamp"] .hl { padding: 0 0.16em; }

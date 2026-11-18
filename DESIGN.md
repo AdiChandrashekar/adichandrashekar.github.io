@@ -35,3 +35,4 @@ recolours the backdrop too.
 - 2026-11-18 — Real terrain backdrop (non-reactive), theme and font presets, separate desktop and phone layouts.
 - 2026-11-18 — Chennai terrain with bathymetry and the OpenStreetMap colour street map as backdrop; new Coast theme (navy ink, road-amber, sea blue); emphasis is now a highlighter-marker stroke instead of italic second-colour text.
 - 2026-11-18 — Indigo theme with matching recoloured map (more land, faint place names); liquid-glass panels; emphasis is a generated river (sine-generated meander, tapered body, bank line, tributary) drawn by assets/js/river.js.
+- 2026-11-18 — River emphasis removed (no word emphasis now); glass panels slightly more opaque with a faint accent-blue ring; flatter pills; map parallax moves by CSS transform every frame over an overscanned canvas, so scrolling is smooth.
